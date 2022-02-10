@@ -1,14 +1,12 @@
-# use command: pip install -e .
-# to install and test it locally before you publish it
-cert = {
-  "type": "service_account",
-  "project_id": "cariindongs",
-  "private_key_id": "d32b81081412f0e50ee1a2d0f7b0d3327f65eac9",
-  "private_key": "-----BEGIN PRIVATE KEY-----\nMIIEvQIBADANBgkqhkiG9w0BAQEFAASCBKcwggSjAgEAAoIBAQCgiB6Uyfmgs7j3\nwSNNlhbcCiHPNjpkCncRW6FnaWvoAbAcDbCjsielgaBRCax4Me452AtXuOAu5uoN\n+5Yy1bSlaHiTYPfg4SD9Y64N90rZt2BCAx5c0M2O0Hm/frXfIdw61Hsbumv2RuFn\nhQW+JmPvNdrLhclBceLd3yfmv6K0liXFcePeBerSmg9xK+hkietJmagjAqClUHh/\nuFDV+HOEZXj7dGGzAm0CUubX8AgF2fN03n/etw4uui/x3AL2jUJ+bYlPZwRfUluu\nmc4L1PQS874UJAMuQp8u3VaIBo9ggn9HC4xIBL2D3y5RfOtMHYXqlk+YqbNVRS+U\nj6N7GyxjAgMBAAECggEAATtqOKwgLVqTxdsGoVbQkBnHzqZU5mWqKkjwwTFu8ZXp\nux1jyK3aXgvTpiuT1kxTzr/YvnCdz95X14mhynwXadmWa1MoM+KmdStpr5PBUFB2\n/aq2dfHoUftJo+2eCbthzFXLKBhTMc2zdy7vL1luFOzt4/f/5m+wVRGcZcn8vrQR\nMsxTgS9TN/K4cYb33O2rl9TcKKwyhSprJq6tOorg1FaDGcPArz2vkdy2oqiWVKQo\nBh7XdvkWH/Vy9ivA03h7qnmE2FuTx6KlkRWzY661VYoDDIYMYlPIfQCKv+X/ggQ/\nmh6MaYUuzf7MpZDcwRMsLjPpZBzE6wE6oO5pw2ObiQKBgQDTgFV7nHUsKV7g7wsT\nuMeelRZYiEjzB9IU6Eikc4bFBKMJKwCYViA+LxGZZoelAV79IwtNw4wzrv78flRU\nOWVX5lCGhQDbiFDG1yGZJCPXvILFrdBExeFM9uhHMXKLj/DiEtk3/cv5vC/NAEyc\nSBrP8IVuJalI7btXA64rzTPmFwKBgQDCToORusgDvRxyEnWgTVUepQOSAVnl7Glc\najpHgGrgRAn5mQ1CfstgbE3F37xeUhnsgj5JGmDAhQmehf9JWDorQHsA0U8v216d\noWKW78kF0W4gVXt9Ekh6BpL1qq7IQrJheFGdCMYWI382YTdFYK0T8Nul4+f4g/by\ncMu8/yVnlQKBgAcyWLZKDpqgFcBloeTb5r74p7f/eyv52iYn+UDPRYiyrbGEKxMD\n6zjydRDZMkhlEYxfguT0gHLJw5dn3Qq4oUAqcBcDs5HEw6rgax5A4o9WtMRxM6MD\ncLUjuaeigRlKnpGyvn1vP1+SDbZWCkVPFsp4jrG+ylHW9Qby8xw+cUOlAoGBAI7P\ndhQd2/Qjgky1FI8FR5KGZeFh7Nj4sVejG8KBuAus9kflHcHJv2DXOTI+Bwyr+zHB\naFYCdSoKnc9NXRxjJB21/rHTJQhfi2L/wp59DpqgGvjY2zJJxcsqGclF8cBuhPzu\nmc15LV4IKO+m9CChtZP6avW6VDxrgY0fKh92x98hAoGAOt8XbNsmOnWszWT6/hRn\n17RhUhz4N6IC40h1Hun2ZniBeHWZnZkDB5xCzJB/U1kx/viOHxKHMaS1h03r51CW\nLqTGtcTa8OYBpDqZ7347e6k6D9VcGDqHJUmig42brnpgqiuGBCxF74zYWrtJwCp8\n5Ws9u3g9Q69Kias9XVf8OY4=\n-----END PRIVATE KEY-----\n",
-  "client_email": "predictnowai@cariindongs.iam.gserviceaccount.com",
-  "client_id": "113067777628006977676",
-  "auth_uri": "https://accounts.google.com/o/oauth2/auth",
-  "token_uri": "https://oauth2.googleapis.com/token",
-  "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
-  "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/predictnowai%40cariindongs.iam.gserviceaccount.com"
+cert = {  
+  "type": "service_account",  
+  "project_id": "predictnow-2a4bf",  
+  "private_key_id": "ac2089ba9f843bb0e65ab9f3a11d2aaa607452ef",  
+  "private_key": "-----BEGIN PRIVATE KEY-----\nMIIEvAIBADANBgkqhkiG9w0BAQEFAASCBKYwggSiAgEAAoIBAQDT3redbyzrk012\nkyKoQ6RouOfn1LbRRc6wVUz1XJnzabuREtg0MviDcskPVFgQGMez0mWLCdU8D9EU\nUb3NSOAdrYDjFAjkuOsTmnc2xarwNHXqe7JqaVWj746N9JKvWSKzpZpSlpjzZESY\n8CNHqv8aujmuVTUaIlukX5p3AVy0LEonOwFI9Jx1weBh/dDbqTR7x1CIpz4m9ZPJ\nb051BE/DPVWPQScXJC54aj95CHBp39MzcoAEek7sd/mouW044lhm84RO288CMsiw\nuRYuC/Z2XMY/c2dsibU7ccxEf9/vHvAwqeDzUyns5HECda/Wfu6f6XR/ALbCnpjJ\nQTid23jbAgMBAAECggEABjgJBF+pXjd8/u2uBxRdNLm2DOcAgBS1eWriOb2AbgBS\nLMhJ0lZrVv29NcGlssCXdAlz85MpUCcCsxRR0ZRsXP1PxYU8Bu1VRnEH7h1P5Cxr\nXaOd3A5qy3ISVCEJVojzl3mqlaFYAfo/zTbB7QOcPf5DXSuhGxBGclpgCqgz6Wc/\nB0IcsFkeImRW+7qWn3Jlu4le2pwdP/i+vTnzMBFw85pH6/rJFQ0B/vr5ulHRKpN4\nHCdu/5K2KKsRmD3A+XV2idoDhE5yFTFp0NpXT6X5UaoB4JxbJIUCBma0sUNau8/R\nzn+I9aFDjMcPjuPkJPD50DJHyRs0NrUcy/MPel/RSQKBgQD6hTqMIDUEkM9ZD98S\nnuwS8+DfYZkzF5lsBmxTGpCtz6l9YsGnFWWHyU2m/GHaK+C7X9k832hKuiOh1f0O\nc3QjjYflrlEVCNYVB15K9y4LIelMUbhOb0nuvVIJw/4DemSMCUxVR/EH4hvc5tRT\nJFcNWd17pYNnWbCAX304i1ZYLQKBgQDYgRF0WARrd35BlAHGFZEDdrgfcc4jtmtd\nZX+T3BNp61cL0XdrFz9JwIEnVJDUj0SDcvSIyefG+Vdeb5b9mFjeqSwXglaB85Ld\nJZXb8Hly5aQzLmuuoZT2WMO+x6dvLQN1R1kBHLFV5KQ/YyrIsJZS8dbrlDNz+V3F\nOvwxCDByJwKBgAr8cLbYarrKhu1G7udoJL4oB8KECy3caRP9rB5w2ctlge9Ht2pW\nW996inc6NihVKEPPTj2HJpGwXAOq2LAbjApLGJyP6mpbutetPQtYj6JZWFvKcaSu\n6LUZhFF9UNRiN6qUdc5/myhXWBV14fXLcC3btQTJG1wa6MyYY2tpYN35AoGAAYeP\n5wGELnouoyn3hT27w4mALYCxUyFDyuofp5zDalkmSUgWjuQgJ1Y701pOl6HXexJB\n1gGPKKG0U094gpwj7JbHX/ckw1BENlnAoEgno38p1M68JgSwN7lS0LM6ZJet0ZNK\ndq6MNi4iVuxNbhOJTFa3DP0EDAqz9eO/ylzjcrsCgYAM/zrpz9MNO5SEp/M7bzcl\nnKsF5krcLLeFVEMkH6t4zBh9VcXGOzjawHA5qXoEMyLZpmDJ9LOhHHXy2Le21QQO\nNZ1W/VXsNWtCcO5wM1lgKZrqqKuYh7lmkmA45yIfrJA3mp0i9IlMqXii0ZmcDazx\nFZDmNmHPz4i5eO+Wgnr3vg==\n-----END PRIVATE KEY-----\n",  
+  "client_email": "firebase-adminsdk-t8p41@predictnow-2a4bf.iam.gserviceaccount.com",  
+  "client_id": "113900166751454816008",  
+  "auth_uri": "https://accounts.google.com/o/oauth2/auth",  
+  "token_uri": "https://oauth2.googleapis.com/token",  
+  "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",  
+  "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/firebase-adminsdk-t8p41%40predictnow-2a4bf.iam.gserviceaccount.com"
 }
