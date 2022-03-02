@@ -417,6 +417,24 @@ class PredictNowClient:
         response = json.loads(response.content.decode('utf-8'))
         return response
 
+    def get_dir_and_sub_dir(self, 
+                            usernames: list = list(), 
+                            model_names: list = list()):
+        request_params = {
+                "usernames": usernames,
+                "model_names": model_names
+            }
+        url = self.host + "/get_dir_and_sub_dir"
+
+        response = requests.post(
+            url,
+            data=request_params,
+        )
+
+        #returning model name in response
+        response = json.loads(response.content.decode('utf-8'))
+        return response
+
     
     def __df_to_parquet_file__(self, input_df: DataFrame):
         df_name = self.__pick_name_from_df__(input_df)
