@@ -1,0 +1,18 @@
+[tool.poetry]
+name = "predictnow"
+version = "2.1.0"
+description = "A restful client library, designed to access predictnow restful API."
+authors = ["PredictNow <tech@predictnow.ai>"]
+license = "MIT"
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.10"
+firebase-admin = "^6.5.0"
+pandas = "^2.2.3"
+requests = "^2.32.3"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"

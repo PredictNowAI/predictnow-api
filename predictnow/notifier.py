@@ -1,6 +1,4 @@
 from firebase_admin import firestore
-import threading
-import sched, time
 
 
 

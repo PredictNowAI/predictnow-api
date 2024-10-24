@@ -1,5 +1,3 @@
-# use command: pip install -e .
-# to install and test it locally before you publish it
 from datetime import datetime
 import json
 import os
@@ -7,17 +5,13 @@ import traceback
 from zipfile import ZipFile
 
 import pandas as pd
-from distutils.dir_util import remove_tree
 from predictnow import cert
 from pandas import DataFrame, read_parquet
 
 from .notifier import MLTrainingCompletedNotifier
-# from .notifier_timer import MLTrainingCompletedNotifier
 from .find_files_with_specific_extensions import find_files_with_specific_extensions
 from uuid import uuid4
-from typing import Dict
 import requests
-from werkzeug.datastructures import FileStorage
 
 # TODO: change the host url to Apigee
 # host_api = should call proxy API gee //authentication/authorization
