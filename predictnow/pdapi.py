@@ -2,34 +2,24 @@ from datetime import datetime
 import json
 import os
 import traceback
+from io import BytesIO
 from zipfile import ZipFile
 
 import pandas as pd
-from predictnow import cert
 from pandas import DataFrame, read_parquet
 
-from .notifier import MLTrainingCompletedNotifier
 from .find_files_with_specific_extensions import find_files_with_specific_extensions
 from uuid import uuid4
 import requests
 
-# TODO: change the host url to Apigee
-# host_api = should call proxy API gee //authentication/authorization
-# host = "http://127.0.0.1:8080"
-import firebase_admin
-from firebase_admin import credentials
-
 from .predict_result import PredictResult
-from .training_result import TrainingResult,Result
+from .training_result import Result
 
 
 class PredictNowClient:
     def __init__(self, url, api_key):
         self.api_key = api_key
         self.host = url
-        cred = credentials.Certificate(cert)
-        if len(firebase_admin._apps) == 0:  # check if firebase is already init
-            firebase_admin.initialize_app(cred)
 
     def create_model(self, username, model_name, params, hyp_dict={}):
         request_params = {
@@ -101,8 +91,8 @@ class PredictNowClient:
             print(dataset)
             dataset = self.update_date_index(dataset)
             dataset.name ="sharadar_input"
-            path = self.__df_to_parquet_file__(dataset)
-        
+            parquet_buffer = self.__df_to_parquet_file__(dataset)
+
         start_date = dataset.index[0].date().strftime('%Y-%m-%d')
         end_date = dataset.index[-1].date().strftime('%Y-%m-%d')
 
@@ -134,10 +124,9 @@ class PredictNowClient:
             return {"success":False,
                     "message":"Kindly send the parameters correctly!"}
         
-        parquet_file = open(path, 'rb')
         files = {
-                'parquet': parquet_file
-            }
+            f'{self.__pick_name_from_df__(dataset)}.parquet': parquet_buffer
+        }
         url = self.host + "/sharadar"
 
         response = requests.post(url,
@@ -168,10 +157,6 @@ class PredictNowClient:
                 'sharadar' : external_feature
             }
 
-            notifier = MLTrainingCompletedNotifier(
-                params['username'], params['train_id'])
-
-            print(external_feature)
             if external_feature in ["True","true","TRUE"] :
 
                 url = self.host + "/trainings"
@@ -182,14 +167,11 @@ class PredictNowClient:
                 ) 
 
             else:
-
-                print("in false")
-                path = self.__df_to_parquet_file__(input_df)
-                parquet_file = open(path, 'rb')
+                parquet_buffer = self.__df_to_parquet_file__(input_df)
                 files = {
-                    'parquet': parquet_file
+                    f'{self.__pick_name_from_df__(input_df)}.parquet': parquet_buffer
                 }
-            
+
                 url = self.host + "/trainings"
                 response = requests.post(
                     url,
@@ -197,8 +179,7 @@ class PredictNowClient:
                     data=params,
                     timeout=3000,
                 )  # prevents TaskCancelled error
-                print("return_op",return_output)
-                    
+
                 
             #returning model name in response
             response = json.loads(response.content.decode('utf-8'))
@@ -208,7 +189,6 @@ class PredictNowClient:
         except Exception as e:
             the_error_type = type(e).__name__
             the_traceback = traceback.format_exc()
-            print(the_traceback)
             return {
                 "success": False,
                 "message": the_error_type + ": " + str(e),
@@ -218,12 +198,19 @@ class PredictNowClient:
                   username: str,
                   train_id: str):
 
-        notifier = MLTrainingCompletedNotifier(
-                username, train_id)
-        result=notifier.wait_for_result()
-       
-        return result
+        url = self.host + "/get_status"
 
+        params = {
+            'username': username,
+            'train_id': train_id,
+        }
+        response = requests.get(
+            url,
+            params=params,
+        )
+        print(response.content)
+        response = json.loads(response.content.decode('utf-8'))
+        return response
 
     def predict(self,
                 input_df: DataFrame,
@@ -244,12 +231,10 @@ class PredictNowClient:
             input_df = self.update_date_index(input_df)
             input_df.name ="sharadar_live_input"
 
-        path = self.__df_to_parquet_file__(input_df)
-        parquet_file = open(path, 'rb')
+        parquet_buffer = self.__df_to_parquet_file__(input_df)
         files = {
-            'parquet': parquet_file
+            f'{self.__pick_name_from_df__(input_df)}.parquet': parquet_buffer
         }
-        
 
         url = self.host + "/predictions"
         response = requests.post(
@@ -413,12 +398,11 @@ class PredictNowClient:
 
     
     def __df_to_parquet_file__(self, input_df: DataFrame):
-        df_name = self.__pick_name_from_df__(input_df)
-        os.makedirs("temp", exist_ok=True)
-        parquet_path = os.path.join("temp", df_name + ".parquet")
-        input_df.to_parquet(parquet_path)
+        buffer = BytesIO()
+        input_df.to_parquet(buffer)
+        buffer.seek(0)
 
-        return parquet_path  # TODO dont store the files, do it in mem?
+        return buffer
 
     def __pick_name_from_df__(self, input_df: DataFrame):
         if hasattr(input_df, "name") and input_df.name:
@@ -428,4 +412,4 @@ class PredictNowClient:
             return input_df.filename
         return str(uuid4())
 
-    
+
